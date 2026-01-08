@@ -9,7 +9,12 @@
 </head>
 
 <body>
-
+<div id="tapOverlay">
+    <div class="intro-envelope">
+        <div class="intro-flap"></div>
+    </div>
+    <div class="tap-text">Tap anywhere, my babyyy 💗</div>
+</div>
 <!-- BACKGROUND MUSIC -->
 <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
@@ -57,21 +62,13 @@
         </div>
     </div>
 
-    <h1>I LOVE YOU, MY WIFEYY</h1>
+    <h1>I LOVE YOU, MY WIFEYYY</h1>
 
     <!-- NAME AREA -->
     <div class="name-wrapper">
 
-        <!-- PEN TIP -->
-        <div class="pen-tip"></div>
-
-        <!-- ENVELOPE (INTRO ONLY) -->
-        <div class="envelope">
-            <div class="flap"></div>
-        </div>
-
         <!-- NAME -->
-        <svg class="name-svg" viewBox="0 0 900 220">
+         <svg class="name-svg" viewBox="0 0 900 220">
             <defs>
                 <linearGradient id="nameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#b1123a"/>
@@ -84,6 +81,11 @@
                 Crischelle Doloroso
             </text>
         </svg>
+         <div class="name-hearts">
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
+</div>
+        
 
         <!-- STAR SPARKLES -->
         <div class="name-sparkles">
@@ -92,13 +94,56 @@
         </div>
 
     </div>
+
+        <!-- PEN TIP -->
+        <div class="pen-tip"></div>
+
+        <!-- ENVELOPE (INTRO ONLY) -->
+      
+        </div>
+
+        
 </div>
 
 <script>
-document.getElementById('playMusic').addEventListener('click', () => {
-    document.getElementById('bg-music').play();
+const music = document.getElementById('bg-music');
+const playBtn = document.getElementById('playMusic');
+const overlay = document.getElementById('tapOverlay');
+
+let isPlaying = false;
+
+/* TAP ANYWHERE */
+overlay.addEventListener('click', () => {
+    if (isPlaying) return;
+
+    music.play().then(() => {
+        isPlaying = true;
+        playBtn.textContent = '⏸ Pause Music';
+
+        document.body.classList.add('started');
+
+        /* FADE OUT OVERLAY */
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 1800);
+    });
+});
+
+/* PLAY / PAUSE TOGGLE */
+playBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    if (isPlaying) {
+        music.pause();
+        playBtn.textContent = '▶ Play Music';
+    } else {
+        music.play();
+        playBtn.textContent = '⏸ Pause Music';
+    }
+
+    isPlaying = !isPlaying;
 });
 </script>
+
 
 </body>
 </html>
