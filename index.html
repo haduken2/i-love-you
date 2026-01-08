@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>I Love You ASAWA KO!</title>
-<link rel="stylesheet" href="style.css">
 
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
 <!-- BACKGROUND MUSIC -->
@@ -14,6 +16,7 @@
 </audio>
 
 <button id="playMusic">▶ Play Music</button>
+
 <div class="falling-petals">
     <span></span><span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span><span></span>
@@ -21,6 +24,7 @@
 
 <div class="scene">
 
+    <!-- BOUQUET -->
     <div class="bouquet">
         <div class="tulip">
             <div class="leaf left"></div>
@@ -53,18 +57,48 @@
         </div>
     </div>
 
-   <h1>
-    I LOVE YOU, MY WIFEYY<br>
-    <span class="name">CRISCHELLE DOLOROSO</span>
-</h1>
+    <h1>I LOVE YOU, MY WIFEYY</h1>
 
+    <!-- NAME AREA -->
+    <div class="name-wrapper">
+
+        <!-- PEN TIP -->
+        <div class="pen-tip"></div>
+
+        <!-- ENVELOPE (INTRO ONLY) -->
+        <div class="envelope">
+            <div class="flap"></div>
+        </div>
+
+        <!-- NAME -->
+        <svg class="name-svg" viewBox="0 0 900 220">
+            <defs>
+                <linearGradient id="nameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#b1123a"/>
+                    <stop offset="50%" stop-color="#e11d48"/>
+                    <stop offset="100%" stop-color="#ff7aa2"/>
+                </linearGradient>
+            </defs>
+
+            <text x="50%" y="65%" text-anchor="middle" class="name-text">
+                Crischelle Doloroso
+            </text>
+        </svg>
+
+        <!-- STAR SPARKLES -->
+        <div class="name-sparkles">
+            <span></span><span></span><span></span>
+            <span></span><span></span>
+        </div>
+
+    </div>
 </div>
+
+<script>
+document.getElementById('playMusic').addEventListener('click', () => {
+    document.getElementById('bg-music').play();
+});
+</script>
 
 </body>
 </html>
-<script>
-    document.getElementById('playMusic').addEventListener('click', () => {
-    const music = document.getElementById('bg-music');
-    music.play();
-});
-</script>
